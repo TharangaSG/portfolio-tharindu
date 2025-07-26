@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download } from 'lucide-react';
-import { personalInfo } from '../data/portfolio';
 import Hero from '../components/sections/Hero';
 import FeaturedProjects from '../components/sections/FeaturedProjects';
 import Skills from '../components/sections/Skills';
