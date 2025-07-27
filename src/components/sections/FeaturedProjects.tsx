@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { projects } from '../../data/portfolio';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 import ProjectCard from '../ui/ProjectCard';
 
 const FeaturedProjects = () => {
+  const { projects } = usePortfolio();
   const featuredProjects = projects.slice(0, 3); // Show first 3 projects
 
   return (

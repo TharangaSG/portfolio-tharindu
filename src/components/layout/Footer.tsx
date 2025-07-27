@@ -1,7 +1,9 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { personalInfo } from '../../data/portfolio';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
 const Footer = () => {
+  const { personalInfo } = usePortfolio();
+  
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container-max section-padding">

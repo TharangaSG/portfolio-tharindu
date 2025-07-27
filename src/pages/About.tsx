@@ -1,7 +1,9 @@
-import { personalInfo, education, experience } from '../data/portfolio';
+import { usePortfolio } from '../contexts/PortfolioContext';
 import { Calendar, MapPin, GraduationCap, Briefcase } from 'lucide-react';
 
 const About = () => {
+  const { personalInfo, education, experience } = usePortfolio();
+  
   return (
     <div className="section-padding">
       <div className="container-max">

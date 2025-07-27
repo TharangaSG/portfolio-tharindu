@@ -1,7 +1,9 @@
-import { researchProjects } from '../data/portfolio';
+import { usePortfolio } from '../contexts/PortfolioContext';
 import ResearchCard from '../components/ui/ResearchCard';
 
 const Research = () => {
+  const { researchProjects } = usePortfolio();
+  
   return (
     <div className="section-padding">
       <div className="container-max">

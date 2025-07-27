@@ -1,6 +1,8 @@
-import { skills } from '../../data/portfolio';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
 const Skills = () => {
+  const { skills } = usePortfolio();
+  
   const skillCategories = {
     Programming: skills.filter(skill => skill.category === 'Programming'),
     Framework: skills.filter(skill => skill.category === 'Framework'),

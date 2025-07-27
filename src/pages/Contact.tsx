@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { personalInfo } from '../data/portfolio';
+import { usePortfolio } from '../contexts/PortfolioContext';
 
 const Contact = () => {
+  const { personalInfo } = usePortfolio();
   const [formData, setFormData] = useState({
     name: '',
     email: '',

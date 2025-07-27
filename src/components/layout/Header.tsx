@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Settings } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -40,6 +42,17 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+
+          {/* Admin Link */}
+          {isAuthenticated && (
+            <Link
+              to="/admin"
+              className="hidden md:flex items-center text-gray-700 hover:text-primary-600 transition-colors duration-200 mr-4"
+            >
+              <Settings size={20} className="mr-1" />
+              Admin
+            </Link>
+          )}
 
           {/* Mobile menu button */}
           <button

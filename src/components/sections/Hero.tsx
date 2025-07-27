@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import { personalInfo } from '../../data/portfolio';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
 const Hero = () => {
+  const { personalInfo } = usePortfolio();
+  
   return (
     <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
       <div className="container-max">

@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { projects } from '../data/portfolio';
+import { usePortfolio } from '../contexts/PortfolioContext';
 import ProjectCard from '../components/ui/ProjectCard';
 
 const Projects = () => {
+  const { projects } = usePortfolio();
   const [filter, setFilter] = useState<string>('all');
   
   const categories = ['all', 'web', 'mobile', 'desktop', 'other'];
