@@ -82,12 +82,12 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
           apiService.getSkills()
         ]);
 
-        setPersonalInfo(personalInfoData && Object.keys(personalInfoData).length > 0 ? personalInfoData : defaultPersonalInfo);
-        setProjects(Array.isArray(projectsData) && projectsData.length > 0 ? projectsData : defaultProjects);
-        setResearchProjects(Array.isArray(researchData) && researchData.length > 0 ? researchData : defaultResearchProjects);
-        setExperience(Array.isArray(experienceData) && experienceData.length > 0 ? experienceData : defaultExperience);
-        setEducation(Array.isArray(educationData) && educationData.length > 0 ? educationData : defaultEducation);
-        setSkills(Array.isArray(skillsData) && skillsData.length > 0 ? skillsData : defaultSkills);
+        setPersonalInfo(personalInfoData && Object.keys(personalInfoData).length > 0 ? personalInfoData as PersonalInfo : defaultPersonalInfo);
+        setProjects(Array.isArray(projectsData) && projectsData.length > 0 ? projectsData as Project[] : defaultProjects);
+        setResearchProjects(Array.isArray(researchData) && researchData.length > 0 ? researchData as ResearchProject[] : defaultResearchProjects);
+        setExperience(Array.isArray(experienceData) && experienceData.length > 0 ? experienceData as Experience[] : defaultExperience);
+        setEducation(Array.isArray(educationData) && educationData.length > 0 ? educationData as Education[] : defaultEducation);
+        setSkills(Array.isArray(skillsData) && skillsData.length > 0 ? skillsData as Skill[] : defaultSkills);
       } catch (error) {
         console.warn('Failed to load from API, using localStorage:', error);
         // Fallback to localStorage
@@ -123,7 +123,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const updatePersonalInfo = async (info: PersonalInfo) => {
     try {
       const updatedInfo = await apiService.updatePersonalInfo(info);
-      setPersonalInfo(updatedInfo);
+      setPersonalInfo(updatedInfo as PersonalInfo);
     } catch (error) {
       console.error('Failed to update personal info:', error);
       // Fallback to local update
@@ -134,7 +134,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const addProject = async (project: Project) => {
     try {
       const newProject = await apiService.createProject(project);
-      setProjects(prev => [...prev, newProject]);
+      setProjects(prev => [...prev, newProject as Project]);
     } catch (error) {
       console.error('Failed to create project:', error);
       setProjects(prev => [...prev, project]);
@@ -144,7 +144,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const updateProject = async (id: string, project: Project) => {
     try {
       const updatedProject = await apiService.updateProject(id, project);
-      setProjects(prev => prev.map(p => p.id === id ? updatedProject : p));
+      setProjects(prev => prev.map(p => p.id === id ? updatedProject as Project : p));
     } catch (error) {
       console.error('Failed to update project:', error);
       setProjects(prev => prev.map(p => p.id === id ? project : p));
@@ -164,7 +164,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const addResearchProject = async (research: ResearchProject) => {
     try {
       const newResearch = await apiService.createResearchProject(research);
-      setResearchProjects(prev => [...prev, newResearch]);
+      setResearchProjects(prev => [...prev, newResearch as ResearchProject]);
     } catch (error) {
       console.error('Failed to create research project:', error);
       setResearchProjects(prev => [...prev, research]);
@@ -174,7 +174,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const updateResearchProject = async (id: string, research: ResearchProject) => {
     try {
       const updatedResearch = await apiService.updateResearchProject(id, research);
-      setResearchProjects(prev => prev.map(r => r.id === id ? updatedResearch : r));
+      setResearchProjects(prev => prev.map(r => r.id === id ? updatedResearch as ResearchProject : r));
     } catch (error) {
       console.error('Failed to update research project:', error);
       setResearchProjects(prev => prev.map(r => r.id === id ? research : r));
@@ -194,7 +194,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const addExperience = async (exp: Experience) => {
     try {
       const newExperience = await apiService.createExperience(exp);
-      setExperience(prev => [...prev, newExperience]);
+      setExperience(prev => [...prev, newExperience as Experience]);
     } catch (error) {
       console.error('Failed to create experience:', error);
       setExperience(prev => [...prev, exp]);
@@ -204,7 +204,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const updateExperience = async (id: string, exp: Experience) => {
     try {
       const updatedExperience = await apiService.updateExperience(id, exp);
-      setExperience(prev => prev.map(e => e.id === id ? updatedExperience : e));
+      setExperience(prev => prev.map(e => e.id === id ? updatedExperience as Experience : e));
     } catch (error) {
       console.error('Failed to update experience:', error);
       setExperience(prev => prev.map(e => e.id === id ? exp : e));
@@ -224,7 +224,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const addEducation = async (edu: Education) => {
     try {
       const newEducation = await apiService.createEducation(edu);
-      setEducation(prev => [...prev, newEducation]);
+      setEducation(prev => [...prev, newEducation as Education]);
     } catch (error) {
       console.error('Failed to create education:', error);
       setEducation(prev => [...prev, edu]);
@@ -234,7 +234,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const updateEducation = async (id: string, edu: Education) => {
     try {
       const updatedEducation = await apiService.updateEducation(id, edu);
-      setEducation(prev => prev.map(e => e.id === id ? updatedEducation : e));
+      setEducation(prev => prev.map(e => e.id === id ? updatedEducation as Education : e));
     } catch (error) {
       console.error('Failed to update education:', error);
       setEducation(prev => prev.map(e => e.id === id ? edu : e));
@@ -254,7 +254,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const addSkill = async (skill: Skill) => {
     try {
       const newSkill = await apiService.createSkill(skill);
-      setSkills(prev => [...prev, newSkill]);
+      setSkills(prev => [...prev, newSkill as Skill]);
     } catch (error) {
       console.error('Failed to create skill:', error);
       setSkills(prev => [...prev, skill]);
@@ -264,7 +264,7 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const updateSkill = async (name: string, skill: Skill) => {
     try {
       const updatedSkill = await apiService.updateSkillByName(name, skill);
-      setSkills(prev => prev.map(s => s.name === name ? updatedSkill : s));
+      setSkills(prev => prev.map(s => s.name === name ? updatedSkill as Skill : s));
     } catch (error) {
       console.error('Failed to update skill:', error);
       setSkills(prev => prev.map(s => s.name === name ? skill : s));
