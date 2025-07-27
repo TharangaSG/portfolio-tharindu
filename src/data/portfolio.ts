@@ -9,7 +9,8 @@ export const personalInfo = {
   linkedin: "https://linkedin.com/in/yourprofile",
   github: "https://github.com/yourusername",
   website: "https://yourportfolio.com",
-  bio: "Passionate computer science student with a strong interest in artificial intelligence, machine learning, and software development. Currently pursuing my degree while actively engaging in research projects and building innovative applications."
+  bio: "Passionate computer science student with a strong interest in artificial intelligence, machine learning, and software development. Currently pursuing my degree while actively engaging in research projects and building innovative applications.",
+  profileImageUrl: "/image.jpg"
 };
 
 export const projects: Project[] = [

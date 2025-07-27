@@ -20,6 +20,7 @@ interface PersonalInfo {
   github: string;
   website: string;
   bio: string;
+  profileImageUrl?: string;
 }
 
 interface PortfolioContextType {

@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <div className="container-max">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-4 px-4 md:px-0">
           <Link to="/" className="text-xl font-bold text-primary-600">
             Portfolio
           </Link>
@@ -76,41 +76,47 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`block py-2 font-medium transition-colors duration-200 ${
-                  isActive(item.href)
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            {/* Mobile Admin Link */}
-            {isAuthenticated ? (
-              <Link
-                to="/admin"
-                className="block py-2 font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Settings size={20} className="inline mr-1" />
-                Admin
-              </Link>
-            ) : (
-              <Link
-                to="/admin/login"
-                className="block py-2 text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Admin Login
-              </Link>
-            )}
+          <nav className="md:hidden py-4 border-t px-4">
+            <div className="flex flex-col items-center space-y-4">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`font-medium transition-colors duration-200 ${
+                    isActive(item.href)
+                      ? 'text-primary-600'
+                      : 'text-gray-700 hover:text-primary-600'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              
+              {/* Mobile Admin Link */}
+              {!loading && (
+                <>
+                  {isAuthenticated ? (
+                    <Link
+                      to="/admin"
+                      className="font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Settings size={20} className="mr-1" />
+                      Admin
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/admin/login"
+                      className="text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Admin Login
+                    </Link>
+                  )}
+                </>
+              )}
+            </div>
           </nav>
         )}
       </div>

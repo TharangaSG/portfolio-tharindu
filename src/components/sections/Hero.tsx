@@ -66,18 +66,27 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="w-full h-96 bg-gradient-to-br from-primary-200 to-primary-400 rounded-2xl flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="w-32 h-32 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-4xl font-bold">
-                    {personalInfo.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+          <div className="relative flex justify-center">
+            {personalInfo.profileImageUrl ? (
+              <img
+                src={personalInfo.profileImageUrl}
+                alt={personalInfo.name}
+                className="w-80 h-80 rounded-full object-cover border-8 border-primary-200 shadow-2xl"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const placeholder = target.nextElementSibling as HTMLElement;
+                  if (placeholder) placeholder.style.display = 'flex';
+                }}
+              />
+            ) : (
+              <div className="w-80 h-80 bg-gradient-to-br from-primary-200 to-primary-400 rounded-full flex items-center justify-center border-8 border-primary-200 shadow-2xl">
+                <div className="text-center text-white">
+                  <div className="text-6xl mb-2">Photo</div>
+                  <div className="text-lg font-medium">Add your photo</div>
                 </div>
-                <p className="text-lg font-medium">Profile Photo</p>
-                <p className="text-sm opacity-80">Add your photo here</p>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
