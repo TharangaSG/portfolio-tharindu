@@ -1,6 +1,6 @@
 // Data mapping utilities to handle differences between frontend and backend data structures
 
-import { Project, ResearchProject, Experience, Education, Skill } from '../types';
+import { Project, Skill } from '../types';
 
 // Map frontend project category to backend enum
 export const mapProjectCategory = (category: string): string => {

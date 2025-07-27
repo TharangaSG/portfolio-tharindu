@@ -7,8 +7,7 @@ import {
   Briefcase, 
   BookOpen, 
   Settings,
-  LogOut,
-  Plus
+  LogOut
 } from 'lucide-react';
 import PersonalInfoManager from '../components/admin/PersonalInfoManager';
 import ProjectsManager from '../components/admin/ProjectsManager';
