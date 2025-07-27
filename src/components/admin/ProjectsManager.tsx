@@ -35,8 +35,8 @@ const ProjectsManager = () => {
     const projectData = {
       ...editForm,
       technologies: typeof editForm.technologies === 'string' 
-        ? editForm.technologies.split(',').map(t => t.trim()).filter(t => t)
-        : editForm.technologies
+        ? (editForm.technologies as string).split(',').map((t: string) => t.trim()).filter((t: string) => t)
+        : Array.isArray(editForm.technologies) ? editForm.technologies : []
     };
 
     if (isAdding) {

@@ -36,8 +36,8 @@ const EducationManager = () => {
     const eduData = {
       ...editForm,
       relevantCourses: typeof editForm.relevantCourses === 'string' 
-        ? editForm.relevantCourses.split(',').map(c => c.trim()).filter(c => c)
-        : editForm.relevantCourses || []
+        ? (editForm.relevantCourses as string).split(',').map((c: string) => c.trim()).filter((c: string) => c)
+        : Array.isArray(editForm.relevantCourses) ? editForm.relevantCourses : []
     };
 
     if (isAdding) {

@@ -26,8 +26,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   useEffect(() => {
     // Check if user is already logged in
     const authStatus = localStorage.getItem('isAdminAuthenticated');
+    console.log('Auth status from localStorage:', authStatus); // Debug log
     if (authStatus === 'true') {
       setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+      // Clear any invalid auth data
+      localStorage.removeItem('isAdminAuthenticated');
     }
     setLoading(false);
   }, []);

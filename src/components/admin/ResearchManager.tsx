@@ -38,11 +38,11 @@ const ResearchManager = () => {
     const researchData = {
       ...editForm,
       authors: typeof editForm.authors === 'string' 
-        ? editForm.authors.split(',').map(a => a.trim()).filter(a => a)
-        : editForm.authors,
+        ? (editForm.authors as string).split(',').map((a: string) => a.trim()).filter((a: string) => a)
+        : Array.isArray(editForm.authors) ? editForm.authors : [],
       tags: typeof editForm.tags === 'string' 
-        ? editForm.tags.split(',').map(t => t.trim()).filter(t => t)
-        : editForm.tags
+        ? (editForm.tags as string).split(',').map((t: string) => t.trim()).filter((t: string) => t)
+        : Array.isArray(editForm.tags) ? editForm.tags : []
     };
 
     if (isAdding) {

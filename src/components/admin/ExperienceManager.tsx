@@ -36,11 +36,11 @@ const ExperienceManager = () => {
     const expData = {
       ...editForm,
       description: typeof editForm.description === 'string' 
-        ? editForm.description.split('\n').filter(d => d.trim())
-        : editForm.description,
+        ? (editForm.description as string).split('\n').filter((d: string) => d.trim())
+        : Array.isArray(editForm.description) ? editForm.description : [],
       technologies: typeof editForm.technologies === 'string' 
-        ? editForm.technologies.split(',').map(t => t.trim()).filter(t => t)
-        : editForm.technologies || []
+        ? (editForm.technologies as string).split(',').map((t: string) => t.trim()).filter((t: string) => t)
+        : Array.isArray(editForm.technologies) ? editForm.technologies : []
     };
 
     if (isAdding) {

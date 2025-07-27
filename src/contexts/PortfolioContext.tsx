@@ -29,22 +29,22 @@ interface PortfolioContextType {
   experience: Experience[];
   education: Education[];
   skills: Skill[];
-  updatePersonalInfo: (info: PersonalInfo) => void;
-  addProject: (project: Project) => void;
-  updateProject: (id: string, project: Project) => void;
-  deleteProject: (id: string) => void;
-  addResearchProject: (research: ResearchProject) => void;
-  updateResearchProject: (id: string, research: ResearchProject) => void;
-  deleteResearchProject: (id: string) => void;
-  addExperience: (exp: Experience) => void;
-  updateExperience: (id: string, exp: Experience) => void;
-  deleteExperience: (id: string) => void;
-  addEducation: (edu: Education) => void;
-  updateEducation: (id: string, edu: Education) => void;
-  deleteEducation: (id: string) => void;
-  addSkill: (skill: Skill) => void;
-  updateSkill: (name: string, skill: Skill) => void;
-  deleteSkill: (name: string) => void;
+  updatePersonalInfo: (info: PersonalInfo) => Promise<void>;
+  addProject: (project: Project) => Promise<void>;
+  updateProject: (id: string, project: Project) => Promise<void>;
+  deleteProject: (id: string) => Promise<void>;
+  addResearchProject: (research: ResearchProject) => Promise<void>;
+  updateResearchProject: (id: string, research: ResearchProject) => Promise<void>;
+  deleteResearchProject: (id: string) => Promise<void>;
+  addExperience: (exp: Experience) => Promise<void>;
+  updateExperience: (id: string, exp: Experience) => Promise<void>;
+  deleteExperience: (id: string) => Promise<void>;
+  addEducation: (edu: Education) => Promise<void>;
+  updateEducation: (id: string, edu: Education) => Promise<void>;
+  deleteEducation: (id: string) => Promise<void>;
+  addSkill: (skill: Skill) => Promise<void>;
+  updateSkill: (name: string, skill: Skill) => Promise<void>;
+  deleteSkill: (name: string) => Promise<void>;
 }
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
@@ -82,12 +82,12 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
           apiService.getSkills()
         ]);
 
-        setPersonalInfo(personalInfoData || defaultPersonalInfo);
-        setProjects(projectsData || defaultProjects);
-        setResearchProjects(researchData || defaultResearchProjects);
-        setExperience(experienceData || defaultExperience);
-        setEducation(educationData || defaultEducation);
-        setSkills(skillsData || defaultSkills);
+        setPersonalInfo(personalInfoData && Object.keys(personalInfoData).length > 0 ? personalInfoData : defaultPersonalInfo);
+        setProjects(Array.isArray(projectsData) && projectsData.length > 0 ? projectsData : defaultProjects);
+        setResearchProjects(Array.isArray(researchData) && researchData.length > 0 ? researchData : defaultResearchProjects);
+        setExperience(Array.isArray(experienceData) && experienceData.length > 0 ? experienceData : defaultExperience);
+        setEducation(Array.isArray(educationData) && educationData.length > 0 ? educationData : defaultEducation);
+        setSkills(Array.isArray(skillsData) && skillsData.length > 0 ? skillsData : defaultSkills);
       } catch (error) {
         console.warn('Failed to load from API, using localStorage:', error);
         // Fallback to localStorage

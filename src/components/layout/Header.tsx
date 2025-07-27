@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -43,15 +43,26 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Admin Link */}
-          {isAuthenticated && (
-            <Link
-              to="/admin"
-              className="hidden md:flex items-center text-gray-700 hover:text-primary-600 transition-colors duration-200 mr-4"
-            >
-              <Settings size={20} className="mr-1" />
-              Admin
-            </Link>
+          {/* Admin Link - Only show when not loading */}
+          {!loading && (
+            <div className="hidden md:flex items-center space-x-4">
+              {isAuthenticated ? (
+                <Link
+                  to="/admin"
+                  className="flex items-center text-gray-700 hover:text-primary-600 transition-colors duration-200"
+                >
+                  <Settings size={20} className="mr-1" />
+                  Admin
+                </Link>
+              ) : (
+                <Link
+                  to="/admin/login"
+                  className="text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200"
+                >
+                  Admin Login
+                </Link>
+              )}
+            </div>
           )}
 
           {/* Mobile menu button */}
@@ -80,6 +91,26 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Mobile Admin Link */}
+            {isAuthenticated ? (
+              <Link
+                to="/admin"
+                className="block py-2 font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Settings size={20} className="inline mr-1" />
+                Admin
+              </Link>
+            ) : (
+              <Link
+                to="/admin/login"
+                className="block py-2 text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Admin Login
+              </Link>
+            )}
           </nav>
         )}
       </div>
