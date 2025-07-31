@@ -50,7 +50,8 @@ export const researchProjects: ResearchProject[] = [
     authors: ["Your Name", "Dr. Advisor Name", "Collaborator Name"],
     tags: ["Machine Learning", "NLP", "Sentiment Analysis", "Social Media"],
     publishedDate: "2023-09-15",
-    conference: "International Conference on Computational Linguistics"
+    conference: "International Conference on Computational Linguistics",
+    paperUrl: "/paper.pdf"
   },
   {
     id: "2",
@@ -58,7 +59,8 @@ export const researchProjects: ResearchProject[] = [
     description: "Research on developing lightweight neural network architectures suitable for deployment on edge devices with limited computational resources.",
     abstract: "This study focuses on creating efficient neural network architectures that maintain high accuracy while being suitable for edge computing environments. We explore various compression techniques and novel architectural designs.",
     authors: ["Your Name", "Research Team"],
-    tags: ["Neural Networks", "Edge Computing", "Optimization", "Mobile Computing"]
+    tags: ["Neural Networks", "Edge Computing", "Optimization", "Mobile Computing"],
+    paperUrl: "/paper.pdf"
   }
 ];
 

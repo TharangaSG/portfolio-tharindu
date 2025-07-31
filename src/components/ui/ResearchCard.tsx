@@ -65,11 +65,11 @@ const ResearchCard = ({ research }: ResearchCardProps) => {
             href={research.paperUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors"
+            className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
           >
-            <FileText size={18} className="mr-1" />
-            Read Paper
-            <ExternalLink size={14} className="ml-1" />
+            <FileText size={18} className="mr-2" />
+            Read More
+            <ExternalLink size={14} className="ml-2" />
           </a>
         </div>
       )}
