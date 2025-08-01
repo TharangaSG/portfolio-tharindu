@@ -11,7 +11,7 @@ const LoadingSpinner = ({ size = 'md', className = '' }: LoadingSpinnerProps) =>
   };
 
   return (
-    <div className={`animate-spin rounded-full border-2 border-gray-300 border-t-primary-600 ${sizeClasses[size]} ${className}`} />
+    <div className={`animate-spin rounded-full border-2 border-gray-300 dark:border-gray-600 border-t-primary-600 dark:border-t-primary-400 ${sizeClasses[size]} ${className}`} />
   );
 };
 

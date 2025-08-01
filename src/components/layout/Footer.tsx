@@ -5,7 +5,7 @@ const Footer = () => {
   const { personalInfo } = usePortfolio();
   
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white transition-colors duration-200">
       <div className="container-max section-padding">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>

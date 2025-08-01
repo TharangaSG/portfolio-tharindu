@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Settings } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,10 +20,10 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+    <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800 z-50 transition-colors duration-200">
       <div className="container-max">
         <div className="flex justify-between items-center py-4 px-4 md:px-0">
-          <Link to="/" className="text-xl font-bold text-primary-600">
+          <Link to="/" className="text-xl font-bold text-primary-600 dark:text-primary-400">
             Portfolio
           </Link>
 
@@ -34,8 +35,8 @@ const Header = () => {
                 to={item.href}
                 className={`font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
+                    ? 'text-primary-600 dark:text-primary-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
                 }`}
               >
                 {item.name}
@@ -43,13 +44,14 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Admin Link - Only show when not loading */}
+          {/* Theme Toggle and Admin Link - Only show when not loading */}
           {!loading && (
             <div className="hidden md:flex items-center space-x-4">
+              <ThemeToggle />
               {isAuthenticated ? (
                 <Link
                   to="/admin"
-                  className="flex items-center text-gray-700 hover:text-primary-600 transition-colors duration-200"
+                  className="flex items-center text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   <Settings size={20} className="mr-1" />
                   Admin
@@ -57,7 +59,7 @@ const Header = () => {
               ) : (
                 <Link
                   to="/admin/login"
-                  className="text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200"
+                  className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   Admin Login
                 </Link>
@@ -65,18 +67,21 @@ const Header = () => {
             </div>
           )}
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile menu button and theme toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button
+              className="text-gray-700 dark:text-gray-300"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t px-4">
+          <nav className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700 px-4">
             <div className="flex flex-col items-center space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -84,8 +89,8 @@ const Header = () => {
                   to={item.href}
                   className={`font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-primary-600'
-                      : 'text-gray-700 hover:text-primary-600'
+                      ? 'text-primary-600 dark:text-primary-400'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -99,7 +104,7 @@ const Header = () => {
                   {isAuthenticated ? (
                     <Link
                       to="/admin"
-                      className="font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center"
+                      className="font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <Settings size={20} className="mr-1" />
@@ -108,7 +113,7 @@ const Header = () => {
                   ) : (
                     <Link
                       to="/admin/login"
-                      className="text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200"
+                      className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Admin Login

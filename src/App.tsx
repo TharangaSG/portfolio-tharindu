@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import { PortfolioProvider } from './contexts/PortfolioContext'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -13,8 +14,9 @@ import ProtectedRoute from './components/admin/ProtectedRoute'
 
 function App() {
   return (
-    <AuthProvider>
-      <PortfolioProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <PortfolioProvider>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={
@@ -51,8 +53,9 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
-      </PortfolioProvider>
-    </AuthProvider>
+        </PortfolioProvider>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 

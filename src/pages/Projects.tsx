@@ -16,8 +16,8 @@ const Projects = () => {
     <div className="section-padding">
       <div className="container-max">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">My Projects</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Here are some of the projects I've worked on. Each project represents a unique challenge 
             and learning opportunity that has contributed to my growth as a developer.
           </p>
@@ -32,7 +32,7 @@ const Projects = () => {
               className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 ${
                 filter === category
                   ? 'bg-primary-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -49,7 +49,7 @@ const Projects = () => {
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No projects found in this category.</p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">No projects found in this category.</p>
           </div>
         )}
       </div>

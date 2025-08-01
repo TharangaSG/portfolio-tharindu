@@ -12,16 +12,16 @@ const Home = () => {
       <Skills />
       
       {/* CTA Section */}
-      <section className="bg-primary-600 text-white section-padding">
+      <section className="bg-primary-600 dark:bg-primary-700 text-white section-padding transition-colors duration-200">
         <div className="container-max text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Work Together?</h2>
-          <p className="text-xl mb-8 text-primary-100">
+          <p className="text-xl mb-8 text-primary-100 dark:text-primary-200">
             Let's discuss how I can contribute to your next project
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-primary-600 hover:bg-gray-100 font-medium py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center justify-center"
+              className="bg-white text-primary-600 hover:bg-gray-100 dark:bg-gray-100 dark:text-primary-700 dark:hover:bg-gray-200 font-medium py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center justify-center"
             >
               Get In Touch
               <ArrowRight className="ml-2" size={20} />
@@ -29,7 +29,7 @@ const Home = () => {
             <a
               href="/resume.pdf"
               download
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center justify-center"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 dark:hover:text-primary-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center justify-center"
             >
               Download Resume
               <Download className="ml-2" size={20} />

@@ -7,16 +7,16 @@ interface ResearchCardProps {
 
 const ResearchCard = ({ research }: ResearchCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 p-6 hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300">
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
         <div className="flex-1">
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">{research.title}</h3>
-          <p className="text-lg text-gray-700 mb-4">{research.description}</p>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{research.title}</h3>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">{research.description}</p>
         </div>
         
         <div className="lg:ml-6 lg:text-right">
           {research.publishedDate && (
-            <div className="flex items-center lg:justify-end text-gray-600 mb-2">
+            <div className="flex items-center lg:justify-end text-gray-600 dark:text-gray-400 mb-2">
               <Calendar size={16} className="mr-1" />
               <span className="text-sm">
                 {new Date(research.publishedDate).toLocaleDateString('en-US', {
@@ -29,7 +29,7 @@ const ResearchCard = ({ research }: ResearchCardProps) => {
           )}
           
           {(research.journal || research.conference) && (
-            <p className="text-sm text-primary-600 font-medium">
+            <p className="text-sm text-primary-600 dark:text-primary-400 font-medium">
               {research.journal || research.conference}
             </p>
           )}
@@ -37,13 +37,13 @@ const ResearchCard = ({ research }: ResearchCardProps) => {
       </div>
 
       <div className="mb-4">
-        <h4 className="font-semibold text-gray-900 mb-2">Abstract</h4>
-        <p className="text-gray-700 leading-relaxed">{research.abstract}</p>
+        <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Abstract</h4>
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{research.abstract}</p>
       </div>
 
       <div className="flex items-center mb-4">
-        <Users size={16} className="text-gray-500 mr-2" />
-        <span className="text-sm text-gray-600">
+        <Users size={16} className="text-gray-500 dark:text-gray-400 mr-2" />
+        <span className="text-sm text-gray-600 dark:text-gray-300">
           <strong>Authors:</strong> {research.authors.join(', ')}
         </span>
       </div>
@@ -52,7 +52,7 @@ const ResearchCard = ({ research }: ResearchCardProps) => {
         {research.tags.map((tag, index) => (
           <span
             key={index}
-            className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium"
+            className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium"
           >
             {tag}
           </span>

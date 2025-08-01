@@ -14,26 +14,26 @@ const Skills = () => {
   const getLevelColor = (level: string) => {
     switch (level) {
       case 'Expert':
-        return 'bg-green-100 text-green-800';
+        return 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200';
       case 'Advanced':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200';
       case 'Intermediate':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200';
       case 'Beginner':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200';
     }
   };
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
       <div className="container-max">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Skills & Technologies
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Here are the technologies and tools I work with to bring ideas to life.
           </p>
         </div>
@@ -41,14 +41,14 @@ const Skills = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.entries(skillCategories).map(([category, categorySkills]) => (
             categorySkills.length > 0 && (
-              <div key={category} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <div key={category} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-gray-900/20">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   {category}
                 </h3>
                 <div className="space-y-3">
                   {categorySkills.map((skill, index) => (
                     <div key={index} className="flex justify-between items-center">
-                      <span className="text-gray-700 font-medium">
+                      <span className="text-gray-700 dark:text-gray-300 font-medium">
                         {skill.name}
                       </span>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getLevelColor(skill.level)}`}>

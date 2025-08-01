@@ -8,13 +8,13 @@ const FeaturedProjects = () => {
   const featuredProjects = projects.slice(0, 3); // Show first 3 projects
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white dark:bg-gray-900 transition-colors duration-200">
       <div className="container-max">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Here are some of my recent projects that showcase my skills and passion for development.
           </p>
         </div>

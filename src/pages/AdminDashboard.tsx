@@ -51,12 +51,12 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
             <button
               onClick={logout}
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}
           <div className="lg:w-64">
-            <nav className="bg-white rounded-lg shadow-sm p-4">
+            <nav className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4">
               <ul className="space-y-2">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
@@ -82,8 +82,8 @@ const AdminDashboard = () => {
                         onClick={() => setActiveTab(tab.id)}
                         className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                           activeTab === tab.id
-                            ? 'bg-primary-100 text-primary-700'
-                            : 'text-gray-700 hover:bg-gray-100'
+                            ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                         }`}
                       >
                         <Icon className="mr-3 h-5 w-5" />
@@ -98,7 +98,7 @@ const AdminDashboard = () => {
 
           {/* Main Content */}
           <div className="flex-1">
-            <div className="bg-white rounded-lg shadow-sm">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm">
               {renderContent()}
             </div>
           </div>
